@@ -1,0 +1,21 @@
+extends ../../layouts/default
+
+block intro
+	.container-sm
+		.page-intro
+			h1.page-title Groups
+			
+block content
+	.container
+		a.btn.btn-primary(href='/keystone/groups', style='float:left; margin-bottom:20px;') Create Group
+	.container
+		each group, i in groups
+			a(href=group.url)
+				h4=group.name
+				//!=utils.cropString( utils.htmlToText(group.description), 240, '...', true )
+				//- !=utils.htmlToText(meetup.description)
+
+		if !groups.length
+			h3.text-muted There are no groups yet.
+
+block js
